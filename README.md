@@ -579,7 +579,7 @@ MIT License - Free for personal and commercial use.
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/balanceheat-hub-backend/issues)
-- **Email**: your-email@example.com
+- **Email**: famiabdala45@gmail.com
 - **Website**: [balanceheat.com](https://balanceheat.com)
 
 ---
