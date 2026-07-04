@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: bh_postgres
+    environment:
+      POSTGRES_USER: balanceheat
+      POSTGRES_PASSWORD: balanceheat123
+      POSTGRES_DB: balanceheat_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U balanceheat"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: bh_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build: .
+    container_name: bh_backend
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://balanceheat:balanceheat123@postgres:5432/balanceheat_db
+      REDIS_URL: redis://redis:6379
+      TURN_SERVER_URL: stun:stun.l.google.com:19302
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
