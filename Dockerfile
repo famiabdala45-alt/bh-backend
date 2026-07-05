@@ -4,15 +4,22 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY package*.json ./
-RUN npm install --omit=dev
+# Create non-root user before copying files
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
 
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install --omit=dev && \
+    npm cache clean --force
+
+# Copy application code
 COPY . .
 
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001 && \
-    chown -R nodejs:nodejs /app
+# Set ownership of app directory
+RUN chown -R nodejs:nodejs /app
 
+# Switch to non-root user
 USER nodejs
 
 EXPOSE 3000
