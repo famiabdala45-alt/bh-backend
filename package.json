@@ -2,13 +2,14 @@
   "name": "bh-backend",
   "version": "2.0.0",
   "description": "BalanceHeat Hub - The World's Most Influential Mirror Economy Platform",
-  "author": "Your Name <your-email@gmail.com>",
+  "author": "Fami Abdala <famibdala45@gmail.com>",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "postinstall": "echo 'Dependencies installed!'"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -21,5 +22,13 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/bh-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/bh-backend/issues",
+    "email": "famibdala45@gmail.com"
   }
 }
