@@ -1,0 +1,24 @@
+# Ignore local files that should not be copied into the image or committed
+node_modules
+npm-debug.log
+.env
+.env.*
+.DS_Store
+.vscode
+.idea
+
+# Git and CI
+.git
+.gitignore
+
+# Build outputs
+dist
+build
+coverage
+
+# Docker
+Dockerfile*
+.dockerignore
+
+# OS
+Thumbs.db
