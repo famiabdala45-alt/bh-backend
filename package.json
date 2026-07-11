@@ -3,7 +3,19 @@
   "version": "2.0.0",
   "description": "BalanceHeat Hub - The World's Most Influential Mirror Economy Platform",
   "author": "Fami Abdala <famibdala45@gmail.com>",
+  "license": "MIT",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "mirror-economy",
+    "balance-heat",
+    "backend",
+    "express",
+    "websocket",
+    "postgresql"
+  ],
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
@@ -25,10 +37,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/bh-backend.git"
+    "url": "https://github.com/famiabdala45-alt/bh-backend.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/bh-backend/issues",
+    "url": "https://github.com/famiabdala45-alt/bh-backend/issues",
     "email": "famibdala45@gmail.com"
   }
 }
